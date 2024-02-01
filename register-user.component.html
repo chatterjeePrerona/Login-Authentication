@@ -1,0 +1,66 @@
+<div class="position">
+    <div class="display-6 text-center big-head">
+      <h1>
+        <b>Registration Form</b>
+      </h1>
+    </div>
+    <!-- display registration error message if username taken -->
+    <p class="text-danger text-center display-6" *ngIf="errorMessage?.length!=0">{{ errorMessage }}</p>
+    <form [formGroup]="regForm" (ngSubmit)="ref.valid && onFormSubmit()" #ref="ngForm" autocomplete="off">
+      <!-- First Name -->
+      <div class="mb-3">
+        <input type="text" class="form-control" id="fname" placeholder="First Name" formControlName="fname" [ngStyle]="{'border-color':(fname.touched && fname.errors?.['required'])
+            || fname.errors?.['minlength']
+            || fname.errors?.['maxlength']
+            || fname.errors?.['pattern'] ? 'red' : 'grey'}">
+        <!-- Error Validation Messages -->
+        <div *ngIf="fname.invalid && (fname.touched || fname.dirty || ref.submitted)">
+          <p class="text-danger" *ngIf="fname.errors?.['required']">Please enter your First Name</p>
+          <p class="text-danger"
+            *ngIf="fname.errors?.['minlength'] || fname.errors?.['maxlength']">
+            Accepts Alphabets, space & Min 5 to Max 30 char</p>
+            <p class="text-danger"
+            *ngIf="fname.errors?.['pattern']">
+            Accepts Alphabets, space & Min 5 to Max 30 char</p>
+        </div>
+      </div>
+      <!-- Last Name -->
+      <div class="mb-3">
+        <input type="text" class="form-control" id="lname" placeholder="Last Name" formControlName="lname" [ngStyle]="{'border-color':(lname.touched && lname.errors?.['required'])
+            || lname.errors?.['minlength']
+            || lname.errors?.['maxlength']
+            || lname.errors?.['pattern'] ? 'red' : 'grey'}">
+        <!-- Error Validation Messages -->
+        <div *ngIf="lname.invalid && (lname.touched || lname.dirty || ref.submitted)">
+          <p class="text-danger" *ngIf="lname.errors?.['required']">Please enter your Last Name</p>
+          <p class="text-danger"
+            *ngIf="lname.errors?.['minlength'] || lname.errors?.['maxlength'] || lname.errors?.['pattern']">
+            Accepts Alphabets, space & Min 5 to Max 30 char</p>
+        </div>
+      </div>
+      <!-- Username -->
+      <div class="mb-3">
+        <input type="text" class="form-control" id="username" placeholder="Username" formControlName="username"
+          [ngStyle]="{'border-color':(username.touched && username.errors?.['required']) ? 'red' : 'grey'}">
+        <!-- Error Validation Messages -->
+        <div *ngIf="username.invalid && (username.touched || username.dirty || ref.submitted)">
+          <p class="text-danger" *ngIf="username.errors?.['required']">Please enter appropriate username</p>
+        </div>
+      </div>
+      <!-- Password -->
+      <div class="mb-3">
+        <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"
+          [ngStyle]="{'border-color':(password.touched && password.errors?.['required']) ? 'red' : 'grey'}">
+        <!-- Error Validation Messages -->
+        <div *ngIf="password.invalid && (password.touched || password.dirty || ref.submitted)">
+          <p class="text-danger" *ngIf="password.errors?.['required']">Please enter a valid password</p>
+        </div>
+      </div>
+      <!-- Submit & Reset Buttons -->
+      <div class="buttons mb-3">
+        <button type="submit" class="btn btn-success" [disabled]="regForm.invalid">Submit</button>
+        <button type="button" class="btn btn-danger mx-3" (click)="onReset()">Reset</button>
+      </div>
+    </form>
+  </div>
+  

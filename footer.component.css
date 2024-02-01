@@ -1,0 +1,14 @@
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.color {
+  color: #2f78c4;
+}
+
+svg {
+  color: #2f78c4;
+  cursor: pointer;
+}

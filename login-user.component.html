@@ -1,0 +1,34 @@
+<div class="position">
+  <div class="display-6 text-center big-head">
+    <h1>
+      <b>Login</b>
+    </h1>
+  </div>
+  <!-- display registration error message if username taken -->
+  <p class="text-danger text-center display-6" *ngIf="errorMessage?.length!=0">{{ errorMessage }}</p>
+  <form [formGroup]="regForm" (ngSubmit)="ref.valid && onFormSubmit()" #ref="ngForm" autocomplete="off">
+    <!-- Username -->
+    <div class="mb-3">
+      <input type="text" class="form-control" id="username" placeholder="Username" formControlName="username"
+        [ngStyle]="{'border-color':(username.touched && username.errors?.['required']) ? 'red' : 'grey'}">
+      <!-- Error Validation Messages -->
+      <div *ngIf="username.invalid && (username.touched || username.dirty || ref.submitted)">
+        <p class="text-danger" *ngIf="username.errors?.['required']">Please enter appropriate username</p>
+      </div>
+    </div>
+    <!-- Password -->
+    <div class="mb-3">
+      <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"
+        [ngStyle]="{'border-color':(password.touched && password.errors?.['required']) ? 'red' : 'grey'}">
+      <!-- Error Validation Messages -->
+      <div *ngIf="password.invalid && (password.touched || password.dirty || ref.submitted)">
+        <p class="text-danger" *ngIf="password.errors?.['required']">Please enter a valid password</p>
+      </div>
+    </div>
+    <!-- Submit & Reset Buttons -->
+    <div class="buttons mb-3">
+      <button type="submit" class="btn btn-success" [disabled]="regForm.invalid">Submit</button>
+      <button type="button" class="btn btn-danger mx-3" (click)="onReset()">Reset</button>
+    </div>
+  </form>
+</div>

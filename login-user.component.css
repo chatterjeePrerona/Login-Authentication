@@ -1,0 +1,25 @@
+.position{
+  margin-top: 5%;
+}
+
+form {
+    width: 500px;
+    margin: auto;
+  }
+  
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .roles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .big-head {
+    color: #000048;
+  }
+  

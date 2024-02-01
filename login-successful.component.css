@@ -1,0 +1,10 @@
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+.btn-color {
+  background-color: #34ebcf;
+}
